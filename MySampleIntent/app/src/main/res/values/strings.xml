@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">MySampleIntent</string>
+    <string name="show_menu">Show Menu</string>
+</resources>
