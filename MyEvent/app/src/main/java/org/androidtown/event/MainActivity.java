@@ -3,9 +3,11 @@ package org.androidtown.event;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.GestureDetector;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -91,6 +93,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK)  {
+            Toast.makeText(getApplicationContext(), "Back key down", Toast.LENGTH_LONG).show();
+        }
+
+        return super.onKeyDown(keyCode, event);
     }
 
     private void println(String data) {
