@@ -1,4 +1,4 @@
-package com.example.bokkimoon.orientation;
+package org.androidtown.orientation;
 
 import org.junit.Test;
 

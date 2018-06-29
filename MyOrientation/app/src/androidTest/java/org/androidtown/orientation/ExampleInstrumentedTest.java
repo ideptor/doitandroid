@@ -1,4 +1,4 @@
-package com.example.bokkimoon.orientation;
+package org.androidtown.orientation;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.example.bokkimoon.orientation", appContext.getPackageName());
+        assertEquals("org.androidtown.orientation", appContext.getPackageName());
     }
 }
