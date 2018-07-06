@@ -1,5 +1,6 @@
 package org.androidtown.server;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,47 +24,9 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ServerThread thread = new ServerThread();
-                thread.start();
+                Intent intent = new Intent(getApplicationContext(), ChatService.class);
+                startService(intent);
             }
         });
-    }
-
-
-    class ServerThread extends Thread {
-        public void run() {
-            int port = 5001;
-            ServerSocket server = null;
-            Socket socket = null;
-            try {
-                server = new ServerSocket(port);
-                Log.d("ServerThread", "Server started");
-
-                while(true) {
-                    socket = server.accept();
-                    ObjectInputStream instream = new ObjectInputStream(socket.getInputStream());
-                    Object input = instream.readObject();
-                    Log.d("ServerThread", "input :" + input);
-
-                    ObjectOutputStream outstream = new ObjectOutputStream(socket.getOutputStream());
-                    outstream.writeObject(input + " from server.");
-                    outstream.flush();
-
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            } finally {
-                if(socket != null) {
-                    try {
-                        socket.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    } finally {
-                        socket = null;
-                    }
-                }
-
-            }
-        }
     }
 }

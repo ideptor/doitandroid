@@ -16,6 +16,7 @@ import java.net.Socket;
 public class MainActivity extends AppCompatActivity {
 
     TextView textView;
+    Handler handler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,10 +50,16 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("ClientThread", "send message to server");
 
                 ObjectInputStream instream = new ObjectInputStream(socket.getInputStream());
-                Object input = instream.readObject();
+                final Object input = instream.readObject();
                 Log.d("ClientThread", "input data : "+input);
 
-                
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        textView.setText("Received: " + input);
+                    }
+                });
+
             } catch (Exception e) {
                 e.printStackTrace();
             } finally {
