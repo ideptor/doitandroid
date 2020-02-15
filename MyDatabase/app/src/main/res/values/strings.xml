@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MyDatabase</string>
+    <string name="retrieve">Retrieve</string>
+    <string name="group2">Group2</string>
+    <string name="new_database">New Database</string>
+    <string name="add_record">Add Record</string>
+</resources>
